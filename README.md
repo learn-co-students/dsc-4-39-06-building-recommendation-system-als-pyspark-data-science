@@ -1,5 +1,5 @@
 
-# Building a Recommendation System with ALS in PySpark
+# Building a Recommendation System in PySpark - Lab
 
 ## Introduction
 
@@ -12,14 +12,13 @@ Note: You are advised to refer to [PySpark Documentation](http://spark.apache.or
 
 You will be able to:
 
-* Demonsrate an understanding on how recommendation systems are being used for personalization of online services/products.
-* Parse and filter datasets into Spark RDDs, performing basic feature selection. 
-* Run a brief hyper-parameter selction activity through a scalable grid search. 
-* Train and evaluate the predictive performance of recommendation system.
-* Generate predictions from the trained model.
+* Demonsrate an understanding on how recommendation systems are being used for personalization of online services/products
+* Parse and filter datasets into Spark RDDs, performing basic feature selection
+* Run a brief hyper-parameter selction activity through a scalable grid search
+* Train and evaluate the predictive performance of recommendation system
+* Generate predictions from the trained model
 
-
-
+## Building a Recommendation System
 
 We have seen how recommender/Recommendation Systems have played an  integral parts in the success of Amazon (Books, Items), Pandora/Spotify (Music), Google (News, Search), YouTube (Videos) etc.  For Amazon these systems bring more than 30% of their total revenues. For Netflix service, 75% of movies that people watch are based on some sort of recommendation.
 
@@ -37,9 +36,9 @@ For online video content services like Netflix and Hulu, the need to build robus
 
 This lab will guide you through a step-by-step process into developing such a movie recommendation system. We shall use the MovieLens dataset to build a movie recommendation system using collaborative filtering technique with Spark's Alternating Least Saqures implementation.
 
-# Stage 1: Data Acquisition and Pre-processing
+## Stage 1: Data Acquisition and Pre-processing
 
-## MovieLens Ratings Dataset
+### MovieLens Ratings Dataset
 
 Previously we used the 1 million ratings dataset for applying simple SVD in python. 
 
@@ -66,7 +65,7 @@ import pyspark
 sc = pyspark.SparkContext('local[*]') # [*] represents a local context i.e. no cluster
 ```
 
-## Dataset Selection, Parsing and Filtering
+### Dataset Selection, Parsing and Filtering
 
 With our SparkContext initialized, and our dataset in an accessible locations, we can now parse the csv files and read them into RDDs. The small dataset contains a number of csv file with features as shown below:  
 
@@ -437,7 +436,7 @@ print ('For testing dataset, the calculated RMSE value:  %s' % (error))
 
 This doesnt look so bad. Remember due to probablistic nature of ALS algorithm, changing the seed value will also show somen fluctuations in RMSE. 
 
-# Stage 3: Making Recommendations
+## Stage 3: Making Recommendations
 
 For making recommendations using collaborative filtering, we re-train the model including the new user preferences in order to compare them with other users in the dataset. In simple terms, the system needs to be trained every time we have new user ratings. Once we have our model trained, we can reuse it to obtain top recomendations for a given user or an individual rating for a particular movie. 
 
@@ -705,9 +704,6 @@ So here we have it. Our recommendation system is generating quite meaningful res
 
 * Use IMDB links to scrap user reviews from IMDB and using basic NLP techniques (word2vec), create extra embeddings for ALS model. 
 
-
-
----
 
 ## Summary
 
